@@ -1,0 +1,29 @@
+#en el codigo de esta funcion hay un momento en el que esta se llama a si misma para seguir ejecutandose o seguir
+#la orden
+
+#def factorial(n):
+#    if n == 1 :
+#        return 1
+#    else:
+#        return n * factorial(n-1)
+    
+#print(factorial(5))
+
+
+#Cree una función recursiva que
+#determine si un elemento e está en una lista l
+
+#def buscar(lista, elemento, index=0):
+    # Caso base: si hemos llegado al final de la lista
+#    if index == len(lista):
+#        return False
+    # Caso recursivo: si encontramos el elemento
+#    if lista[index] == elemento:
+#        return True
+    # Llamada recursiva
+#    return buscar(lista, elemento, index + 1)
+
+#x = [345, 345, 345, 5, 5, 5, 6]
+#print(buscar(x, 7))  # Debería imprimir False
+#print(buscar(x, 5))  # Debería imprimir True
+

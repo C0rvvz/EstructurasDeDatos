@@ -1,0 +1,64 @@
+class Mapa:
+
+    # Función para crear una fila de tamaño n con valores None
+    def crear_fila(n, fila=None):
+        if fila is None:  # Si fila es None, inicializa una lista vacía
+            fila = []
+        if len(fila) == n:  # Si la longitud de la fila es igual a n, retorna la fila
+            return fila
+        return crear_fila(n, fila + [None])  # Llama recursivamente a crear_fila agregando None a la fila
+
+    # Función para crear una matriz de tamaño n x n con valores None
+    def crear_matriz(n, matriz=None):
+        if matriz is None:  # Si matriz es None, inicializa una lista vacía
+            matriz = []
+        if len(matriz) == n:  # Si la longitud de la matriz es igual a n, retorna la matriz
+            return matriz
+        return crear_matriz(n, matriz + [crear_fila(n)])  # Llama recursivamente a crear_matriz agregando una nueva fila
+
+    # Función para imprimir la matriz fila por fila
+    def imprimir_matriz(matriz):
+        for fila in matriz:  # Itera sobre cada fila en la matriz
+            print(fila)  # Imprime la fila
+
+    # Crear una matriz de 5x5 y luego imprimirla
+    ecosistema = crear_matriz(5)  # Llama a crear_matriz con n=5 para crear una matriz de 5x5
+    imprimir_matriz(ecosistema)  # Llama a imprimir_matriz para imprimir la matriz creada
+
+class Organismos():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def moverse(matriz):
+        pass
+
+class Depredador():
+
+    def __init__():
+        pass
+
+    def cazar():
+        pass
+
+class Reproduccion():
+    pass
+
+class Morir():
+    pass
+
+class Planta():
+
+    def __init__():
+        pass
+
+    def comer():
+        pass
+
+class Presa():
+
+    def __init__():
+        pass    
+
+    def regeneracion():
+        pass
