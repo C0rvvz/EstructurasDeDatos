@@ -1,64 +1,96 @@
-class Mapa:
-
-    # Función para crear una fila de tamaño n con valores None
-    def crear_fila(n, fila=None):
-        if fila is None:  # Si fila es None, inicializa una lista vacía
-            fila = []
-        if len(fila) == n:  # Si la longitud de la fila es igual a n, retorna la fila
-            return fila
-        return crear_fila(n, fila + [None])  # Llama recursivamente a crear_fila agregando None a la fila
-
-    # Función para crear una matriz de tamaño n x n con valores None
-    def crear_matriz(n, matriz=None):
-        if matriz is None:  # Si matriz es None, inicializa una lista vacía
-            matriz = []
-        if len(matriz) == n:  # Si la longitud de la matriz es igual a n, retorna la matriz
-            return matriz
-        return crear_matriz(n, matriz + [crear_fila(n)])  # Llama recursivamente a crear_matriz agregando una nueva fila
-
-    # Función para imprimir la matriz fila por fila
-    def imprimir_matriz(matriz):
-        for fila in matriz:  # Itera sobre cada fila en la matriz
-            print(fila)  # Imprime la fila
-
-    # Crear una matriz de 5x5 y luego imprimirla
-    ecosistema = crear_matriz(5)  # Llama a crear_matriz con n=5 para crear una matriz de 5x5
-    imprimir_matriz(ecosistema)  # Llama a imprimir_matriz para imprimir la matriz creada
 
 class Organismos():
     def __init__(self, x, y):
         self.x = x
         self.y = y
     
-    def moverse(matriz):
-        pass
-
-class Depredador():
-
-    def __init__():
-        pass
-
-    def cazar():
-        pass
+    def moverse(self, matriz):
+      pass
 
 class Reproduccion():
-    pass
-
-class Morir():
-    pass
-
-class Planta():
-
-    def __init__():
+     
+     def agregar_organismo():
         pass
 
-    def comer():
+class Depredador(Organismos):
+
+    def __init__(self, x, y, energia):
+        super().__init__(x, y)
+        self.energia = energia
+
+    def cazar(self, matriz):
+      pass
+
+class Planta(Organismos):
+
+    def __init__(self, x, y):
+        super().__init__(x, y)
+
+    def regeneracion(self, matriz):
+       pass
+
+class Presa(Organismos):
+
+    def __init__(self, x, y, energia):
+        super().__init__(x, y)
+        self.energia = energia  
+
+    def comer(self, matriz):
         pass
 
-class Presa():
-
-    def __init__():
-        pass    
-
-    def regeneracion():
+    def moverse(self, matriz):
         pass
+
+class Actualizar_simulacion():
+
+    @staticmethod
+    def simular_ciclo(matriz, ciclos):
+        if ciclos == 0:
+            return matriz
+        def actualizar_organismos(matriz, x=0, y=0):
+            if x == len(matriz):
+                return
+            if y == len(matriz[x]):
+                return actualizar_organismos(matriz, x + 1, 0)
+            organismo = matriz[x][y]
+            if isinstance(organismo, Depredador):
+                organismo.cazar(matriz)
+            elif isinstance(organismo, Presa):
+                organismo.comer(matriz)
+            elif isinstance(organismo, Planta):
+                organismo.regeneracion(matriz)
+            return actualizar_organismos(matriz, x, y + 1)
+        actualizar_organismos(matriz)
+        return Actualizar_simulacion.simular_ciclo(matriz, ciclos - 1)
+
+class Mapa():
+
+    @staticmethod
+    def crear_fila(n, fila=None):
+        if fila is None:  
+            fila = []
+        if len(fila) == n:  
+            return fila
+        return Mapa.crear_fila(n, fila + [None]) 
+
+    @staticmethod
+    def crear_matriz(n, matriz=None):
+        if matriz is None: 
+            matriz = []
+        if len(matriz) == n:  
+            return matriz
+        return Mapa.crear_matriz(n, matriz + [Mapa.crear_fila(n)])  
+
+    @staticmethod
+    def imprimir_matriz(matriz):
+        def imprimir_fila(filas):
+            if not filas:
+                return
+            print(filas[0])
+            imprimir_fila(filas[1:])
+        imprimir_fila(matriz)
+
+ecosistema = Mapa.crear_matriz(5)
+ecosistema = poblar_ecosistema(ecosistema, 2, 4, 6)
+ecosistema = Actualizar_simulacion.simular_ciclo(ecosistema, 10)
+Mapa.imprimir_matriz(ecosistema)

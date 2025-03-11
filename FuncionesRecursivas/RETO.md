@@ -4,7 +4,6 @@ Objetivo
 
 El objetivo de esta práctica es desarrollar un ecosistema simulado donde diferentes tipos de organismos interactúan entre sí de manera estrictamente recursiva. La solución debe modelar el comportamiento de depredadores, presas y recursos dentro de un entorno definido, asegurando que todas las operaciones de actualización y evaluación del ecosistema sean implementadas usando recursión exclusivamente.
 
-
 Descripción de la Actividad
 
 Los estudiantes deben trabajar en parejas para diseñar e implementar un sistema recursivo que simule la evolución de un ecosistema. La simulación se ejecutará en ciclos donde los organismos interactúan según reglas predefinidas y sus estados cambian en cada iteración.
